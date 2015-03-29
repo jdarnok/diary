@@ -1,4 +1,4 @@
 class Grade < ActiveRecord::Base
-  has_many :user_grades
-  has_many :users, through: :user_grades
+  has_many :users_grades
+  has_many :users, through: :users_grades
 end
