@@ -8,8 +8,13 @@
 </head>
 <body>
 
-  <%= yield %>
-  <%= render 'layouts/dialog' %>
+    <%= render 'layouts/navbar' %>
+
+    <div class="container">
+        <%= yield %>
+    </div>
+
+    <%= render 'layouts/dialog' %>
 
 </body>
 </html>
