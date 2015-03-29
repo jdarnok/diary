@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :subjects
+  resources :school_classes
 end
 
 

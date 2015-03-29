@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150329115754) do
+ActiveRecord::Schema.define(version: 20150329133720) do
 
   create_table "grades", force: :cascade do |t|
     t.integer  "value"
@@ -64,9 +64,9 @@ ActiveRecord::Schema.define(version: 20150329115754) do
   create_table "users_grades", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "subject_id"
-    t.integer  "grade_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "value"
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
