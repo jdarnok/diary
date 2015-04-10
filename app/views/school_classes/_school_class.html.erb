@@ -1,0 +1,10 @@
+<tr id="schoolclass_<%= school_class.id %>">
+  <td><%= school_class.id %></td>
+  <td><%= school_class.name %></td>
+  <td>
+    <%= link_to 'Change', edit_school_class_path(school_class), remote: true, :class => 'btn btn-sm btn-info' %>
+    <%= link_to 'Details', school_class_path(school_class), :class => 'btn btn-sm btn-primary' %>
+    <%= link_to 'Delete', school_class, remote: true, :method => :delete,
+                data: {confirm: "Remove Class: #{school_class.name}"}, :class => 'btn btn-sm btn-danger' %>
+  </td>
+</tr>

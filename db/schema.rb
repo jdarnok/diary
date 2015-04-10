@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150329125355) do
+ActiveRecord::Schema.define(version: 20150410175240) do
 
   create_table "grades", force: :cascade do |t|
     t.integer  "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "owner_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -34,6 +35,7 @@ ActiveRecord::Schema.define(version: 20150329125355) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name"
+    t.integer  "teacher_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -41,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150329125355) do
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,9 +70,9 @@ ActiveRecord::Schema.define(version: 20150329125355) do
   create_table "users_grades", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "subject_id"
-    t.integer  "grade_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "value"
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
@@ -84,6 +87,7 @@ ActiveRecord::Schema.define(version: 20150329125355) do
     t.integer  "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "value"
   end
 
 end

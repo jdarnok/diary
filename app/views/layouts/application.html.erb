@@ -8,9 +8,13 @@
 </head>
 <body>
 
+
     <%= render 'layouts/navbar' %>
 
     <div class="container">
+      <% if alert %>
+          <div class="alert alert-danger" role="alert"><%= alert %></div>
+      <% end %>
         <%= yield %>
     </div>
 

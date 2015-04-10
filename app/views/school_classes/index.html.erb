@@ -1,0 +1,24 @@
+<div class="container">
+
+  <h2>Classes</h2>
+  <% if current_user.has_role? :admin %>
+  <div class="well">
+    <%= link_to "New Class", new_school_class_path, remote: true, class: "btn btn-primary" %>
+  </div>
+      <% end %>
+  <div class="new-class"></div>
+
+  <table id class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>ID#</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody id="classes">
+    <%= render @school_classes %>
+    </tbody>
+  </table>
+
+</div>
