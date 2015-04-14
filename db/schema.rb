@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150410175240) do
 
+
   create_table "grades", force: :cascade do |t|
     t.integer  "value"
     t.datetime "created_at", null: false

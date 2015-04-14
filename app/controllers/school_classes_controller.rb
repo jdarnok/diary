@@ -1,4 +1,5 @@
 class SchoolClassesController < ApplicationController
+
   before_action :set_school_class, only: [:edit, :update, :show, :destroy]
   before_action :authenticate_user!
   def index
@@ -63,6 +64,7 @@ class SchoolClassesController < ApplicationController
   end
 
   private
+
   def set_school_class
     @school_class = SchoolClass.find(params[:id])
   end
@@ -70,4 +72,5 @@ class SchoolClassesController < ApplicationController
   def school_class_params
     params.require(:school_class).permit(:name)
   end
+
 end

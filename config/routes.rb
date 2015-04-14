@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :users
   resources :subjects
   resources :school_classes
-
   get '/contact', :to => 'visitors#contact'
 end
 
