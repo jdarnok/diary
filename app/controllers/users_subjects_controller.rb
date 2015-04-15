@@ -1,5 +1,5 @@
 class UsersSubjectsController < ApplicationController
-  before_action :set_grade, only: [:show, :edit, :update]
+  before_action :set_grade, only: [:show, :edit, :update, :destroy]
   def index
     @grades = UsersSubject.where(user_id: params[:user], subject_id: params[:subject]).flatten
     @user = User.find(params[:user])
@@ -34,6 +34,16 @@ class UsersSubjectsController < ApplicationController
 
     end
   end
+
+
+    def destroy
+      @grade.destroy
+      respond_to do |format|
+        format.js
+        format.html { redirect_to users_subjects_url }
+        format.json { head :no_content }
+      end
+    end
 
   def update
     respond_to do |format|

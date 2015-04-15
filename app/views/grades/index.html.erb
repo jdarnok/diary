@@ -16,6 +16,8 @@
     <%= grade.value %>
     <td>
       <%= link_to 'Edit', edit_grade_path(grade), remote: true, :class => 'btn btn-sm btn-info' %>
+      <%= link_to 'Delete', grade, remote: true, :method => :delete,
+                  data: {confirm: "Remove Grade?"}, :class => 'btn btn-sm btn-danger' %>
     </td>
   </td></tr>
     <% end %>

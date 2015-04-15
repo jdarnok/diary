@@ -10,8 +10,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :subjects
-
-
+  
   resources :school_classes
   get '/contact', :to => 'visitors#contact'
 

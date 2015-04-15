@@ -1,0 +1,3 @@
+$('#dialog').modal('toggle');
+$('#grade<%= @grade.id %>').append('<%= j render( partial: "grades/grade",
+locals: {grade: @grade} ) %>')
