@@ -1,8 +1,12 @@
 <tr id="<%= "user_subject#{user_subject.id}"%>"><td>
 <%= user_subject.value %>
+</td>
+  <td>
+  <%= user_subject.description %>
+</td>
 <td>
   <%= link_to 'Edit', edit_user_subject_path(user_subject), remote: true, :class => 'btn btn-sm btn-info' %>
   <%= link_to 'Delete', users_subject, remote: true, :method => :delete,
               data: {confirm: "Remove Grade?"}, :class => 'btn btn-sm btn-danger' %>
 </td>
-</td></tr>
+</tr>

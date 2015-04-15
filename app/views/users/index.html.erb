@@ -1,6 +1,14 @@
 
-<% @users.each do |user| %>
-id: <%= user.id %>
-first name: <%= user.first_name %>
-last name: <%= user.last_name %><br>
-<% end %>
+<table id class="table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th>ID#</th>
+    <th>First Name</th>
+    <th>Second Name</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody id="users">
+    <%= render @users %>
+  </tbody>
+</table>

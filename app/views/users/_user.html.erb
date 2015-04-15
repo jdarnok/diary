@@ -1,0 +1,10 @@
+<tr id="student_<%= user.id %>">
+  <td><%= user.id %></td>
+  <td><%= link_to user.first_name, user%></td>
+  <td><%= user.last_name %></td>
+  <td>
+    <%= link_to 'Change', edit_user_path(user), remote: true, :class => 'btn btn-sm btn-info' %>
+    <%= link_to 'Delete', user, remote: true, :method => :delete,
+                data: {confirm: "Remove User: #{user.first_name} #{user.last_name}"}, :class => 'btn btn-sm btn-danger' %>
+  </td>
+</tr>

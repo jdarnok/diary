@@ -7,6 +7,7 @@
   <thead>
   <tr>
     <th>Value</th>
+    <th>Description</th>
     <th>Action</th>
   </tr>
   </thead>
@@ -14,12 +15,16 @@
     <% @grades.each do |grade| %>
     <tr id="<%= "grade#{grade.id}"%>"><td>
     <%= grade.value %>
-    <td>
+  </td>
+  <td>
+  <%= grade.description %>
+</td>
+<td>
       <%= link_to 'Edit', edit_grade_path(grade), remote: true, :class => 'btn btn-sm btn-info' %>
       <%= link_to 'Delete', grade, remote: true, :method => :delete,
                   data: {confirm: "Remove Grade?"}, :class => 'btn btn-sm btn-danger' %>
     </td>
-  </td></tr>
+  </tr>
     <% end %>
   </tbody>
 </table>

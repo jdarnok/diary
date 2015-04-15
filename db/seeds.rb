@@ -20,27 +20,6 @@ admin = User.first
   SchoolClass.find_or_create_by(name: "class#{i}")
   end
  p "Created #{SchoolClass.count} classes"
-#
-# SchoolClass.all.each do |schoolclass|
-#   (1..3).each do |i|
-#  user = User.create!(school_class: schoolclass, first_name:"Student #{i}", last_name: i,
-#  password: "changeme", password_confirmation: "changeme", email:"#{schoolclass.id}#{i}Student@sd.pl")
-#   user.add_role :student
-#     end
-#
-# end
-# p "added students"
-# (1..3).each do |i|
-#   teacher = User.create!(first_name:"Teacher #{i}", last_name: "Last Teacher #{i} name", password: "changeme",
-#   password_confirmation: "changeme", email:"teacher#{i}@reach.pl")
-#   teacher.add_role :teacher
-#   Subject.create!(name: "Teacher #{i} subject", user_id: teacher.id,
-#                   description: "This is subject which Teacher #{i} is teaching")
-#   classes = SchoolClass.all.limit(3)
-#   classes[i-1].update_attribute(:teacher_id, teacher.id)
-# end
-# p "added teachers and classes they own"
-
 
 
  SchoolClass.all.each do |schoolclass|
@@ -49,10 +28,11 @@ admin = User.first
      user = User.create!(school_class: schoolclass, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                          password: "changeme", password_confirmation: "changeme", email:"#{schoolclass.id}#{i}Student@sd.pl")
      user.add_role :student
-     UsersSubject.create!(user: user, subject: subject, value: i)
+     UsersSubject.create!(user: user, subject: subject, value: i, description: Faker::Company.catch_phrase)
    end
    teacher = User.create!(first_name:  Faker::Name.first_name, last_name: Faker::Name.last_name, password: "changeme",
                           password_confirmation: "changeme", email:"teacher#{schoolclass.id}@reach.pl")
    teacher.add_role :teacher
    schoolclass.update_attribute(:teacher_id, teacher.id)
  end
+p "Created Subjects and Students"
