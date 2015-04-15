@@ -10,7 +10,8 @@ UsersGrade.destroy_all
 #
 # p "Created #{Subject.count} subjects."
 #
- User.create!(email: 'user@example.com', password: 'changeme', password_confirmation: 'changeme', first_name: 'admin')
+ User.create!(email: 'user@example.com', password: 'changeme',first_name: Faker::Name.first_name,
+              last_name: Faker::Name.last_name, password_confirmation: 'changeme')
 admin = User.first
  admin.add_role :admin
  p "Created test admin user"
@@ -45,12 +46,12 @@ admin = User.first
  SchoolClass.all.each do |schoolclass|
    subject = Subject.create!(name: "English nr #{schoolclass.id}", description: "English course")
    (1..3).each do |i|
-     user = User.create!(school_class: schoolclass, first_name:"Student #{i}", last_name: i,
+     user = User.create!(school_class: schoolclass, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                          password: "changeme", password_confirmation: "changeme", email:"#{schoolclass.id}#{i}Student@sd.pl")
      user.add_role :student
      UsersSubject.create!(user: user, subject: subject, value: i)
    end
-   teacher = User.create!(first_name:"Teacher #{j}", last_name: "Last Teacher #{schoolclass.id} name", password: "changeme",
+   teacher = User.create!(first_name:  Faker::Name.first_name, last_name: Faker::Name.last_name, password: "changeme",
                           password_confirmation: "changeme", email:"teacher#{schoolclass.id}@reach.pl")
    teacher.add_role :teacher
    schoolclass.update_attribute(:teacher_id, teacher.id)

@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :grades]
 
   load_and_authorize_resource
   def index
     if params[:role]
      @users = Role.find_by_name(params[:role]).users
-
   else
     @users = User.all
   end
@@ -13,7 +12,16 @@ class UsersController < ApplicationController
 
 
   def show
+      if @user.roles.first.name == 'student'
+       @subjects = @user.subjects
+       @grades = User
+    end
   end
+  
+  def grades
+    @subject = Subject.find(params[:subject])
+  end
+
 
   def edit
   end

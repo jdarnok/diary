@@ -1,2 +1,39 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+
+  <div class="container">
+
+    <h2>Student</h2>
+    <table id class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Second Name</th>
+      </tr>
+      </thead>
+      <tr id="user_<%= @user.id %>">
+        <td><%= @user.id %></td>
+        <td><%= @user.first_name%></td>
+        <td><%= @user.last_name %></td>
+      </tr>
+
+      </tbody>
+    </table>
+
+    <table id class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Subject</th>
+        <th>Grades</th>
+      </tr>
+      </thead>
+      <% @subjects.each do |subject| %>
+      <tr id="subject_<%= subject.id %>">
+        <td><%= subject.name %></td>
+        <td><%= link_to 'Show grades', show_grades_path(subject: subject.id, user: @user.id)%></td>
+
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>

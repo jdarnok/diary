@@ -15,6 +15,7 @@ gem 'bootstrap-sass', '~> 3.3.3'
 gem 'devise'
 gem 'cancancan'
 gem 'rolify'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug'

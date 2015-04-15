@@ -1,0 +1,20 @@
+<h1><%= @user.first_name %> <%= @user.last_name %>'s grades</h1>
+<h2> <%= @subject.name %></h2>
+<table id class="table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th>Value</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody id="grades">
+    <% @grades.each do |grade| %>
+    <tr id="<%= "grade#{grade.id}"%>"><td>
+    <%= grade.value %>
+    <td>
+      <%= link_to 'Edit', edit_grade_path(grade), remote: true, :class => 'btn btn-sm btn-info' %>
+    </td>
+  </td></tr>
+    <% end %>
+  </tbody>
+</table>
