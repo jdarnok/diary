@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+  load_and_authorize_resource
   def index
     if params[:role]
-    @users = User.where(params[:role])
-    end
+     @users = Role.find_by_name(params[:role]).users
+
   else
     @users = User.all
   end
-
+  end
 
 
   def show

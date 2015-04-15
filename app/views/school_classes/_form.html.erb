@@ -1,17 +1,21 @@
-<%= form_for(@school_class) do |f| %>
-  <% if @school_class.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@school_class.errors.count, "error") %> prohibited this school_class from being saved:</h2>
 
-      <ul>
-      <% @school_class.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for(@school_class, remote: true, :html => { :role => "form" }) do |f| %>
+    <div id="error_explanation" class="bg-danger text-danger">
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :name, :class => "control-label" %>
+          <%= f.text_field :name, :class => "form-control first_input"  %>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+
+        <div class="form-group">
+          <%= f.submit  @school_class.new_record? ? "Create" : "Update", :class => "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
 <% end %>

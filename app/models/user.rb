@@ -6,11 +6,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :users_subjects
-  has_many :subjects, through: :users_subjects  
+  has_many :subjects, through: :users_subjects
 
   has_many :users_grades
   has_many :grades, through: :users_grades
 
-  # belongs_to :school_class       
+   belongs_to :school_class
          
 end
