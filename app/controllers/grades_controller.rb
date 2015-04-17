@@ -5,8 +5,8 @@ class GradesController < ApplicationController
     @grades = UsersSubject.where(user_id: params[:user], subject_id: params[:subject]).flatten
     @user = User.find(params[:user])
     @subject = Subject.find(params[:subject])
+    session[:student] = @user.id
     session[:subject] = @subject.id
-    session[:user] = @user.id
   end
   def edit
   end
@@ -16,7 +16,7 @@ class GradesController < ApplicationController
   @grade = UsersSubject.new
   end
   def create
-  @grade = UsersSubject.new
+
   end
 
   def update
@@ -39,7 +39,7 @@ class GradesController < ApplicationController
   end
 
   def grade_params
-    params.require(:users_subject).permit(:value)
+    params.require(:users_subject).permit(:value, :description)
   end
 
 

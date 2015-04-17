@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :grades]
-
+  
   load_and_authorize_resource
   def index
     if params[:role]
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
        @grades = User
     end
   end
-  
+
   def grades
     @subject = Subject.find(params[:subject])
   end

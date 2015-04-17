@@ -7,15 +7,20 @@ class Ability
        user ||= User.new # guest user (not logged in)
        if user.has_role? :admin
          can :manage, :all
-         cannot :create, Grade
-         cannot :update, Grade
+         cannot :create, UsersSubject
+         cannot :update, UsersSubject
        else
         if user.has_role? :student
-          can :read, Grade, user_id: user.id
+          can :read, UsersSubject, user_id: user.id
+          can :read, User, id: user.id
+
+
         end
         if user.has_role? :teacher
-          can :manage, Grade, owner_id: user.id
+          can :manage, UsersSubject
+          can :manage, UsersGrade, owner_id: user.id
           can :read, Subject, owner_id: user.id
+          can :read, User
         end
        end
 

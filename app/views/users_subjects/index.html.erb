@@ -1,26 +1,57 @@
 <h1><%= @user.first_name %> <%= @user.last_name %>'s grades</h1>
 <h2> <%= @subject.name %></h2>
+<% if current_user.has_role? :teacher %>
 <div class="well">
   <%= link_to "New Grade", new_users_subject_path, remote: true, class: "btn btn-primary" %>
 </div>
+<% end %>
 <table id class="table table-bordered table-striped">
   <thead>
   <tr>
     <th>Value</th>
     <th>Description</th>
+    <% if current_user.has_role? :teacher %>
     <th>Action</th>
+    <% end %>
   </tr>
   </thead>
   <tbody id="grades">
+    <% if !current_user.has_role? :student %>
     <% @grades.each do |grade| %>
+
     <tr id="<%= "grade#{grade.id}"%>"><td>
     <%= grade.value %>
-    <td>
+  </td>
+  <td>
+  <%= grade.description %>
+</td>
+<% if current_user.has_role? :teacher %>
+<td>
       <%= link_to 'Edit', edit_grade_path(grade), remote: true, :class => 'btn btn-sm btn-info' %>
       <%= link_to 'Delete', grade, remote: true, :method => :delete,
                   data: {confirm: "Remove Grade?"}, :class => 'btn btn-sm btn-danger' %>
     </td>
-  </td></tr>
-    <% end %>
+
+  <% end %>
+<% end %>
+<% else %>
+<% @grades.each do |grade| %>
+<% if current_user.id == grade.user_id %>
+<tr id="<%= "grade#{grade.id}"%>"><td>
+<%= grade.value %>
+</td>
+<td>
+<%= grade.description %>
+</td>
+<% end %>
+
+<% end %>
+
+
+  <% end %>
+</tr>
+
+
+
   </tbody>
 </table>

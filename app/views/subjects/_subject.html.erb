@@ -4,9 +4,11 @@
   <td><%= subject.description %></td>
   <td><%= l(subject.updated_at, format: :long) %></td>
   <td><%= l(subject.created_at, format: :long) %></td>
+  <% if current_user.has_role? :admin %>
   <td>
     <%= link_to 'Change', edit_subject_path(subject), remote: true, :class => 'btn btn-sm btn-info' %>
     <%= link_to 'Delete', subject, remote: true, :method => :delete,
                 data: {confirm: "Remove Subject: #{subject.name}"}, :class => 'btn btn-sm btn-danger' %>
   </td>
+  <% end %>
 </tr>

@@ -16,7 +16,8 @@ gem 'devise'
 gem 'cancancan'
 gem 'rolify'
 gem 'faker'
-
+gem 'sidekiq'
+gem 'prawn'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

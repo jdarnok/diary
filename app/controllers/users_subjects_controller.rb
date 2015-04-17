@@ -1,10 +1,12 @@
 class UsersSubjectsController < ApplicationController
   before_action :set_grade, only: [:show, :edit, :update, :destroy]
+
   def index
     @grades = UsersSubject.where(user_id: params[:user], subject_id: params[:subject]).flatten
     @user = User.find(params[:user])
     @subject = Subject.find(params[:subject])
-
+    session[:user] = @user.id
+    session[:subject] = @subject.id
   end
 
   def edit
@@ -21,7 +23,7 @@ class UsersSubjectsController < ApplicationController
     user = User.find(session[:user])
     subject = Subject.find(session[:subject])
     @grade = UsersSubject.create(value: grade_params[:value], subject: subject,
-    user: user)
+    user: user, description: grade_params[:description])
 
     respond_to do |format|
       if @grade.save
@@ -65,7 +67,7 @@ class UsersSubjectsController < ApplicationController
   end
 
   def grade_params
-    params.require(:users_subject).permit(:value)
+    params.require(:users_subject).permit(:value, :description)
   end
 
 
