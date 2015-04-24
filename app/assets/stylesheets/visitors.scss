@@ -1,3 +1,19 @@
 // Place all the styles related to the visitors controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  padding-top: 70px;
+}
+.bignav {
+  background-color: #101010;
+
+
+}
+.navbar-inverse {
+  padding-top: 15px;
+  height: 80px;
+  background-color: rgba(110, 55, 148, 0);
+}
+nav {
+  transition: all 0.4s ease;
+}

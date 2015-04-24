@@ -18,6 +18,7 @@ gem 'rolify'
 gem 'faker'
 gem 'sidekiq'
 gem 'prawn'
+gem 'websocket-rails'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

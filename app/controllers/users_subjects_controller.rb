@@ -2,7 +2,8 @@ class UsersSubjectsController < ApplicationController
   before_action :set_grade, only: [:show, :edit, :update, :destroy]
 
   def index
-    @grades = UsersSubject.where(user_id: params[:user], subject_id: params[:subject]).flatten
+    @grades = UsersSubject.where(user_id: params[:user],
+    subject_id: params[:subject]).flatten
     @user = User.find(params[:user])
     @subject = Subject.find(params[:subject])
     session[:user] = @user.id
@@ -31,7 +32,8 @@ class UsersSubjectsController < ApplicationController
         format.js
       else
         format.json { render json: @grade.errors.full_messages,
-                             status: :unprocessable_entity }
+                             status: :unprocessable_entity
+                             }
       end
 
     end

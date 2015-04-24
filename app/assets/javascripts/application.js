@@ -15,3 +15,36 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+//= require websocket_rails/main
+$(function() {
+  var dispatcher;
+  var options = { autoHide: false, arrowShow: false, elementPosition: 'right middle',
+  style: 'bootstrap'}
+  $.notify.defaults( options );
+  dispatcher = new WebSocketRails('localhost:3000/websocket', true);
+  document.querySelector('button#pdf_generator').onclick = function() {
+    $("button#pdf_generator").notify("Generating PDF. You will be notified when task is complete", "info");
+
+    return dispatcher.trigger('pdf_message', $('#pdf_generator').data('id'));
+  };
+  var channel = dispatcher.subscribe('pdf');
+  channel.bind('pdf_message', function(message) {
+    console.log(message);
+
+    $("#navbar>ul:not('.navbar-right')>li:last-child").notify("Pdf generated", "success", {});
+
+
+  });
+
+
+});
+$(window).scroll(function() {
+if ($(this).scrollTop() > 100){
+    $('nav').addClass("bignav");
+    $('nav').removeClass("navbar-inverse");
+  }
+  else{
+    $('nav').removeClass("bignav");
+    $('nav').addClass("navbar-inverse");
+  }
+});

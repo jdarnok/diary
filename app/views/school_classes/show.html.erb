@@ -1,7 +1,17 @@
 
+
 <div class="container">
 
   <h2>Students</h2>
+  <% if current_user.has_role? :teacher %>
+  <div id="pdf_websocket" data-uri="<%= request.host %>:<%= request.port %>/websocket">
+    <div class="well">
+      <%= button_tag(class: "btn btn-primary", id: "pdf_generator", 'data-id': @school_class.id ) do %>
+      <% content_tag(:strong, 'Generate PDF') %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
   <table id class="table table-bordered table-striped">
     <thead>
     <tr>
