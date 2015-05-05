@@ -17,3 +17,10 @@ body {
 nav {
   transition: all 0.4s ease;
 }
+
+#navbar > ul > li > a:hover {
+  color: #337ab7;
+}
+.navbar-brand {
+  color: #337ab7 !important;
+}
